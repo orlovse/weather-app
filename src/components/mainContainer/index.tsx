@@ -18,7 +18,7 @@ const MainContainer: FC = () => {
 					</Grid>
 			  ));
 	return (
-		<Box>
+		<Box p={2}>
 			<Grid container direction="row" justify="space-between" alignItems="center">
 				<Grid item xs={12} md="auto">
 					<CurrentWeatherCard />

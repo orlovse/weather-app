@@ -3,6 +3,7 @@ import { Grid } from '@material-ui/core';
 import Skeleton from '@material-ui/lab/Skeleton';
 import { currentWeather } from 'mockData';
 import { getIcon } from 'utils/geyIcons';
+import { StyledWeatherCard } from 'styles/sharedStyle';
 // import { celsiusToFahrenheit } from 'utils/helpers';
 
 const WeatherCard: FC = () => {
@@ -22,14 +23,14 @@ const WeatherCard: FC = () => {
 		<Skeleton variant="circle" width={80} height={80} />
 	);
 	return (
-		<div>
+		<StyledWeatherCard>
 			<Grid container direction="column" alignItems="center">
 				{img}
 				<div>{weekday || <Skeleton width={120} />}</div>
 				<div>{phrase || <Skeleton width={120} />}</div>
 				<div>{stringTemperature || <Skeleton width={120} />}</div>
 			</Grid>
-		</div>
+		</StyledWeatherCard>
 	);
 };
 

@@ -90,3 +90,30 @@ export const TextContent = styled.p<{
 	line-height: ${({ lineHeight = 20 }) => lineHeight}px;
 	${({ isTruncate }) => isTruncate && textTruncate}
 `;
+
+export const GlassBox = styled.div`
+	width: 100%;
+	box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+	border-radius: 15px;
+	background-color: rgba(255, 255, 255, 0.15);
+	backdrop-filter: blur(5px);
+	text-align: center;
+	margin-top: 2rem;
+`;
+
+export const StyledWeatherCard = styled.div`
+	display: flex;
+	align-items: center;
+	min-width: 200px;
+	height: 280px;
+	margin: 1rem;
+	box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+	border-radius: 15px;
+	background-color: rgba(255, 255, 255, 0.15);
+	transition: 0.5s;
+
+	&:hover {
+		transform: perspective(1px) scale(1.05);
+		box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.6);
+	}
+`;

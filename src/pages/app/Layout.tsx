@@ -1,6 +1,7 @@
 import React from 'react';
 import type { ReactNode } from 'react';
 import Navbar from 'components/navbar';
+import { Container, Box } from '@material-ui/core';
 
 interface IProps {
 	children: ReactNode;
@@ -10,7 +11,9 @@ const AppLayout: React.FC<IProps> = ({ children }: IProps) => {
 	return (
 		<div>
 			<Navbar />
-			{children}
+			<Container>
+				<Box marginBottom={4}>{children}</Box>
+			</Container>
 		</div>
 	);
 };
