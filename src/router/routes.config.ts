@@ -18,6 +18,12 @@ const routeConfig = {
 			component: lazy(() => import(/*webpackChunkName: "HOME"*/ 'pages/app/home')),
 			routes: [],
 		},
+		{
+			path: routes.FAVORITES,
+			exact: true,
+			component: lazy(() => import(/*webpackChunkName: "HOME"*/ 'pages/app/favorites')),
+			routes: [],
+		},
 	],
 	loginRoutes: [
 		{
