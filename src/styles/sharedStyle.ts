@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import type { InterpolationFunction } from 'styled-components';
+import heart from '../resources/png/heart.png';
 
 export const centerFlex = `
   display: flex;
@@ -115,5 +116,28 @@ export const StyledWeatherCard = styled.div`
 	&:hover {
 		transform: perspective(1px) scale(1.05);
 		box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.6);
+	}
+`;
+
+interface TitleProps {
+	readonly isActive: boolean;
+}
+
+export const StyledAnimatedHeart = styled.div<TitleProps>`
+	width: 100px;
+	height: 100px;
+	background: url(${heart}) no-repeat;
+	background-position: 0 0;
+	cursor: pointer;
+	animation: ${props => (props.isActive ? 'heart' : 'none')} 1s steps(28);
+	animation-fill-mode: forwards;
+	@keyframes heart {
+		0% {
+			background-position: 0 0;
+		}
+
+		100% {
+			background-position: -2800px 0;
+		}
 	}
 `;

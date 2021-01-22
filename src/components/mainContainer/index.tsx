@@ -3,6 +3,7 @@ import { Grid, Box } from '@material-ui/core';
 import CurrentWeatherCard from 'components/currentWeatherCard';
 import { fiveDays } from 'mockData';
 import WeatherCard from 'components/weatherCard';
+import AnimatedHeart from 'components/animatedHeart';
 
 const MainContainer: FC = () => {
 	const cardsList =
@@ -24,7 +25,7 @@ const MainContainer: FC = () => {
 					<CurrentWeatherCard />
 				</Grid>
 				<Grid item xs={12} md="auto" className="flex-center">
-					{/* <AnimatedHeart currentCityKey={currentCityKey} /> */}
+					<AnimatedHeart currentCityKey="1234" />
 				</Grid>
 			</Grid>
 			<h2 style={{ fontSize: '3rem', margin: '0' }}>{/* {WeatherText} */}</h2>

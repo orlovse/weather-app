@@ -8,9 +8,9 @@ import { routerMiddleware } from 'connected-react-router';
 import history from 'router/history';
 import rootReducer from './reducers';
 import rootSaga from './sagas';
-import { ApplicationState, AppAction } from './types';
+import { ApplicationState } from './types';
 
-const configureStore = (initialState?: ApplicationState): Store<ApplicationState, AppAction> => {
+const configureStore = (initialState?: ApplicationState): Store => {
 	const composeEnhancers = composeWithDevTools({});
 	// create the redux-saga middleware
 	const sagaMiddleware = createSagaMiddleware();
