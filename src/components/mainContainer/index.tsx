@@ -1,9 +1,12 @@
 import React, { FC } from 'react';
+import { connect, ConnectedProps } from 'react-redux';
 import { Grid, Box } from '@material-ui/core';
+import Skeleton from '@material-ui/lab/Skeleton';
+
 import CurrentWeatherCard from 'components/currentWeatherCard';
 import WeatherCard from 'components/weatherCard';
 import AnimatedHeart from 'components/animatedHeart';
-import { connect, ConnectedProps } from 'react-redux';
+
 import { ApplicationState } from 'store/types';
 import { currentCityKeySelector } from 'store/selectors/localUserOptions.selector';
 import { currentWeatherSelector } from 'store/selectors/currentWeather.selector';
@@ -40,7 +43,7 @@ const MainContainer: FC<PropsFromRedux> = ({ currentCityKey, currentWeather, fiv
 					<AnimatedHeart currentCityKey={currentCityKey} />
 				</Grid>
 			</Grid>
-			<h2 style={{ fontSize: '3rem', margin: '0' }}>{/* {WeatherText} */}</h2>
+			<h1>{currentWeather?.text || <Skeleton width={150} style={{ display: 'inline-block' }} />}</h1>
 			<Grid container justify="space-between">
 				{cardsList}
 			</Grid>

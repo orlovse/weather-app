@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Grid } from '@material-ui/core';
+import { Grid, Box } from '@material-ui/core';
 import Skeleton from '@material-ui/lab/Skeleton';
 import { getIcon } from 'utils/geyIcons';
 import { StyledWeatherCard } from 'styles/sharedStyle';
@@ -39,9 +39,9 @@ const WeatherCard: FC<Props> = ({ weatherData }: Props) => {
 		<StyledWeatherCard>
 			<Grid container direction="column" alignItems="center">
 				{img}
-				<div>{weekday || <Skeleton width={120} />}</div>
-				<div>{phrase || <Skeleton width={120} />}</div>
-				<div>{stringTemperature || <Skeleton width={120} />}</div>
+				<h2>{weekday || <Skeleton width={120} />}</h2>
+				<Box m={2}>{phrase || <Skeleton width={120} />}</Box>
+				<h3>{stringTemperature || <Skeleton width={120} />}</h3>
 			</Grid>
 		</StyledWeatherCard>
 	);
