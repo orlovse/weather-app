@@ -13,7 +13,7 @@ const AutocompleteSearch: FC<PropsFromRedux> = ({ setCurrentCity }: PropsFromRed
 	return (
 		<Box>
 			<Autocomplete
-				style={{ maxWidth: 400, margin: '0 auto' }}
+				style={{ maxWidth: 400, margin: '0 auto', padding: '1rem' }}
 				getOptionSelected={(option, value) => option.LocalizedName === value.LocalizedName}
 				getOptionLabel={option => option.LocalizedName}
 				options={searchCity}

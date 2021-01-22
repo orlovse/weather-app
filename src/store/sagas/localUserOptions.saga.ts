@@ -8,6 +8,7 @@ import {
 	IRemoveFromFavorites,
 } from './../types/localUserOptions.types';
 import { all, fork, takeEvery } from 'redux-saga/effects';
+import { toast } from 'react-toastify';
 // import { addToFavorites } from 'store/actions/localUserOptions.actions';
 
 function* handleAddToFavorites(action: IAddToFavorites) {
@@ -16,12 +17,30 @@ function* handleAddToFavorites(action: IAddToFavorites) {
 	// saveToLocalStorage('favorites', {
 	// 	[key]: { currentCityName, currentCountry, currentWeather },
 	// });
+	toast.success('City added to favorites!', {
+		position: 'bottom-center',
+		autoClose: 2000,
+		hideProgressBar: false,
+		closeOnClick: true,
+		pauseOnHover: true,
+		draggable: true,
+		progress: undefined,
+	});
 	yield console.log('aba');
 }
 
 function* handleRemoveFromFavorites(action: IRemoveFromFavorites) {
 	// removeFromLocalStorage(action.payload.key);
 	// yield put(removeFromFavorites({ key: action.payload.key }));
+	toast.warning('City removed from favorites!', {
+		position: 'bottom-center',
+		autoClose: 2000,
+		hideProgressBar: false,
+		closeOnClick: true,
+		pauseOnHover: true,
+		draggable: true,
+		progress: undefined,
+	});
 	yield console.log('remove from favorites');
 }
 
