@@ -141,3 +141,21 @@ export const StyledAnimatedHeart = styled.div<TitleProps>`
 		}
 	}
 `;
+
+export const StyledFavoriteCard = styled.div`
+	display: flex;
+	align-items: center;
+	min-width: 200px;
+	height: 280px;
+	margin: 1rem;
+	padding: 1rem;
+	box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+	border-radius: 15px;
+	background-color: rgba(255, 255, 255, 0.15);
+	transition: 0.5s;
+
+	&:hover {
+		transform: perspective(1px) scale(1.03);
+		box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.6);
+	}
+`;

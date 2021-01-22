@@ -8,7 +8,7 @@ export interface ICurrentWeatherState {
 	data: CurrentWeather | null;
 }
 
-type CurrentWeather = {
+export type CurrentWeather = {
 	date: string;
 	text: string;
 	icon: number;

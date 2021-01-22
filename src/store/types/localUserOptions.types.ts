@@ -1,3 +1,5 @@
+import { CurrentWeather } from './currentWeather.types';
+
 export const SET_CURRENT_CITY = 'SET_CURRENT_CITY';
 export const SWITCH_DARK = 'SWITCH_DARK';
 export const SWITCH_FAHRENHEIT = 'SWITCH_FAHRENHEIT';
@@ -15,14 +17,22 @@ export interface ILocalUserState {
 }
 
 interface IFavorites {
-	[key: string]: { currentCityName: string; currentCountry: string; currentWeather: bbb };
+	[key: string]: Favorites;
 }
-
-type bbb = { ab: string };
+export type Favorites = {
+	currentCityName: string;
+	currentCountry: string;
+	currentWeather: CurrentWeather;
+};
 
 export type LocalUserActions = IAddToFavorites | IRemoveFromFavorites | ISetCurrentCity;
 
-export type PayloadFavorite = { key: string; currentCityName: string; currentCountry: string; currentWeather: bbb };
+export type PayloadFavorite = {
+	key: string;
+	currentCityName: string;
+	currentCountry: string;
+	currentWeather: CurrentWeather;
+};
 
 export interface IAddToFavorites {
 	type: typeof ADD_TO_FAVORITES;
