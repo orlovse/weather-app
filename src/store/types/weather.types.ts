@@ -1,0 +1,5 @@
+export const LOAD_CURRENT_WEATHER = 'LOAD_CURRENT_WEATHER';
+export const LOAD_FIVE_DAYS_WEATHER = 'LOAD_FIVE_DAYS_WEATHER';
+export const SUCCESS = '_SUCCESS';
+export const REQUEST = '_REQUEST';
+export const FAILURE = '_FAILURE';

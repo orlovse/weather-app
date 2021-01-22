@@ -18,25 +18,34 @@ const localUserOptions = (state = initialState, action: LocalUserActions): ILoca
 				currentCity: action.payload,
 			};
 		case ADD_TO_FAVORITES:
-			const { key, currentCityName, currentCountry, currentWeather } = action.payload;
 			return {
 				...state,
 				favorites: {
 					...state.favorites,
-					[key]: { currentCityName, currentCountry, currentWeather },
+					[action.payload.key]: {
+						currentCityName: action.payload.currentCityName,
+						currentCountry: action.payload.currentCountry,
+						currentWeather: action.payload.currentWeather,
+					},
 				},
 			};
 		case REMOVE_FROM_FAVORITES:
 			// if(Object.keys(state.favorites).length > 1) {
-			const { ...fields } = state.favorites;
+			// const { ...fields } = state.favorites;
 			// const fields = {...state.favorites}
-			delete fields[action.payload.key];
-			// }
 
-			return {
-				...state,
-				favorites: fields,
-			};
+			// }
+			// console.log('fields', fields);
+
+			if (Object.keys(state.favorites).length > 0) {
+				const fields = { ...state.favorites };
+				delete fields[action.payload.key];
+				return {
+					...state,
+					favorites: { ...fields },
+				};
+			}
+			return state;
 
 		default:
 			return state;

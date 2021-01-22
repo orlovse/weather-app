@@ -4,16 +4,10 @@ import Skeleton from '@material-ui/lab/Skeleton';
 import { currentWeather } from 'mockData';
 import { getIcon } from 'utils/geyIcons';
 import { StyledWeatherCard } from 'styles/sharedStyle';
-import { addToFavorites } from 'store/actions/localUserOptions.actions';
 import { connect } from 'react-redux';
 // import { celsiusToFahrenheit } from 'utils/helpers';
-import { AddToFavoritesAction } from 'store/types/localUserOptions.types';
 
-interface IProps {
-	addToFavorites: AddToFavoritesAction;
-}
-
-const WeatherCard: FC<IProps> = ({ addToFavorites }: IProps) => {
+const WeatherCard: FC = () => {
 	const isFahrenheit = false;
 	const phrase = 'Sunny';
 	const weekday = 'Sunday';
@@ -30,9 +24,6 @@ const WeatherCard: FC<IProps> = ({ addToFavorites }: IProps) => {
 		<Skeleton variant="circle" width={80} height={80} />
 	);
 
-	const handleClick = () => {
-		addToFavorites({ key: '1', currentCityName: 'telaviv', currentCountry: 'israel', currentWeather: { ab: 'sbsbs' } });
-	};
 	return (
 		<StyledWeatherCard>
 			<Grid container direction="column" alignItems="center">
@@ -40,10 +31,9 @@ const WeatherCard: FC<IProps> = ({ addToFavorites }: IProps) => {
 				<div>{weekday || <Skeleton width={120} />}</div>
 				<div>{phrase || <Skeleton width={120} />}</div>
 				<div>{stringTemperature || <Skeleton width={120} />}</div>
-				<button onClick={handleClick}>+++</button>
 			</Grid>
 		</StyledWeatherCard>
 	);
 };
 
-export default connect(null, { addToFavorites })(WeatherCard);
+export default connect()(WeatherCard);

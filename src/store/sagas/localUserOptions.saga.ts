@@ -1,4 +1,4 @@
-import { removeFromFavorites } from './../actions/localUserOptions.actions';
+// import { removeFromFavorites } from './../actions/localUserOptions.actions';
 // import { saveToLocalStorage, removeFromLocalStorage } from './../../utils/helpers';
 import type { AllEffect, ForkEffect } from '@redux-saga/core/effects';
 import {
@@ -7,7 +7,7 @@ import {
 	REMOVE_FROM_FAVORITES,
 	IRemoveFromFavorites,
 } from './../types/localUserOptions.types';
-import { all, fork, takeEvery, put } from 'redux-saga/effects';
+import { all, fork, takeEvery } from 'redux-saga/effects';
 // import { addToFavorites } from 'store/actions/localUserOptions.actions';
 
 function* handleAddToFavorites(action: IAddToFavorites) {
@@ -21,7 +21,8 @@ function* handleAddToFavorites(action: IAddToFavorites) {
 
 function* handleRemoveFromFavorites(action: IRemoveFromFavorites) {
 	// removeFromLocalStorage(action.payload.key);
-	yield put(removeFromFavorites({ key: action.payload.key }));
+	// yield put(removeFromFavorites({ key: action.payload.key }));
+	yield console.log('remove from favorites');
 }
 
 function* watchAddToFavorites() {

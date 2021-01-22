@@ -4,8 +4,17 @@ import CurrentWeatherCard from 'components/currentWeatherCard';
 import { fiveDays } from 'mockData';
 import WeatherCard from 'components/weatherCard';
 import AnimatedHeart from 'components/animatedHeart';
+import { connect, ConnectedProps } from 'react-redux';
+import { ApplicationState } from 'store/types';
+import { currentCityKeySelector } from 'store/selectors/localUserOptions.selector';
 
-const MainContainer: FC = () => {
+const connector = connect((state: ApplicationState) => ({
+	currentCityKey: currentCityKeySelector(state),
+}));
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+const MainContainer: FC<PropsFromRedux> = ({ currentCityKey }: PropsFromRedux) => {
 	const cardsList =
 		fiveDays.DailyForecasts.length > 1
 			? fiveDays.DailyForecasts.map(weatherData => (
@@ -25,7 +34,7 @@ const MainContainer: FC = () => {
 					<CurrentWeatherCard />
 				</Grid>
 				<Grid item xs={12} md="auto" className="flex-center">
-					<AnimatedHeart currentCityKey="1234" />
+					<AnimatedHeart currentCityKey={currentCityKey} />
 				</Grid>
 			</Grid>
 			<h2 style={{ fontSize: '3rem', margin: '0' }}>{/* {WeatherText} */}</h2>
@@ -36,4 +45,4 @@ const MainContainer: FC = () => {
 	);
 };
 
-export default MainContainer;
+export default connector(MainContainer);

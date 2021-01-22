@@ -28,7 +28,6 @@ const AnimatedHeart = ({ currentCityKey, currentCity, favorites, addToFavorites,
 			addToFavorites({ key: currentCityKey, currentCityName: name, currentCountry: country, currentWeather: { ab: 'as' } });
 		}
 	};
-	console.log(currentCityKey, currentCity, favorites, addToFavorites, removeFromFavorites);
 	return <StyledAnimatedHeart isActive={isFavoriteCity} onClick={handleClick} />;
 };
 
