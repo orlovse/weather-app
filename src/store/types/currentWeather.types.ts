@@ -26,12 +26,12 @@ type PayloadSuccess = {
 	data: CurrentWeather;
 };
 
-interface ISetCurrentWeatherSuccsess {
+interface ISetCurrentWeatherSuccess {
 	type: typeof SET_CURRENT_WEATHER_SUCCESS;
 	payload: PayloadSuccess;
 }
 
-export type SetCurrentWeatherSuccsessAction = (payload: PayloadSuccess) => ISetCurrentWeatherSuccsess;
+export type SetCurrentWeatherSuccsessAction = (payload: PayloadSuccess) => ISetCurrentWeatherSuccess;
 
 interface ISetCurrentWeatherError {
 	type: typeof SET_CURRENT_WEATHER_ERROR;
@@ -40,4 +40,4 @@ interface ISetCurrentWeatherError {
 
 export type SetCurrentWeatherErrorAction = (error: string) => ISetCurrentWeatherError;
 
-export type CurrentWeatherActions = IGetCurrentWeather | ISetCurrentWeatherSuccsess | ISetCurrentWeatherError;
+export type CurrentWeatherActions = IGetCurrentWeather | ISetCurrentWeatherSuccess | ISetCurrentWeatherError;
