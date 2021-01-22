@@ -8,7 +8,7 @@ export interface IFiveDaysWeatherState {
 	data: FiveDaysWeather[] | null;
 }
 
-type FiveDaysWeather = {
+export type FiveDaysWeather = {
 	date: string;
 	maxT: number;
 	minT: number;
