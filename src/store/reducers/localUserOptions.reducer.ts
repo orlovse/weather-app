@@ -4,11 +4,13 @@ import {
 	ADD_TO_FAVORITES,
 	REMOVE_FROM_FAVORITES,
 	SET_CURRENT_CITY,
+	SWITCH_FAHRENHEIT,
 } from './../types/localUserOptions.types';
 
 const initialState: ILocalUserState = {
 	favorites: {},
 	currentCity: { key: '215854', name: 'Tel Aviv', country: 'Israel' },
+	isFahrenheit: false,
 };
 
 const localUserOptions = (state = initialState, action: LocalUserActions): ILocalUserState => {
@@ -17,6 +19,11 @@ const localUserOptions = (state = initialState, action: LocalUserActions): ILoca
 			return {
 				...state,
 				currentCity: action.payload,
+			};
+		case SWITCH_FAHRENHEIT:
+			return {
+				...state,
+				isFahrenheit: action.payload.isFahrenheit,
 			};
 		case ADD_TO_FAVORITES:
 			return {

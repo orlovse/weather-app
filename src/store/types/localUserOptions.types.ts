@@ -6,7 +6,6 @@ export const SWITCH_FAHRENHEIT = 'SWITCH_FAHRENHEIT';
 export const GET_LOCATION = 'GET_LOCATION';
 export const ADD_TO_FAVORITES = 'ADD_TO_FAVORITES';
 export const REMOVE_FROM_FAVORITES = 'REMOVE_FROM_FAVORITES';
-
 export interface ILocalUserState {
 	currentCity: {
 		key: string;
@@ -14,6 +13,7 @@ export interface ILocalUserState {
 		country: string;
 	};
 	favorites: IFavorites;
+	isFahrenheit: boolean;
 }
 
 interface IFavorites {
@@ -25,7 +25,7 @@ export type Favorites = {
 	currentWeather: CurrentWeather;
 };
 
-export type LocalUserActions = IAddToFavorites | IRemoveFromFavorites | ISetCurrentCity;
+export type LocalUserActions = IAddToFavorites | IRemoveFromFavorites | ISetCurrentCity | ISwitchFahrenheit;
 
 export type PayloadFavorite = {
 	key: string;
@@ -44,6 +44,11 @@ export interface IRemoveFromFavorites {
 	payload: { key: string };
 }
 
+export interface ISwitchFahrenheit {
+	type: typeof SWITCH_FAHRENHEIT;
+	payload: { isFahrenheit: boolean };
+}
+
 export type PayloadCurrentCity = {
 	key: string;
 	name: string;
@@ -59,3 +64,5 @@ export type AddToFavoritesAction = (payload: PayloadFavorite) => IAddToFavorites
 export type RemoveFromFavoritesAction = (payload: { key: string }) => IRemoveFromFavorites;
 
 export type SetCurrentCityAction = (payload: PayloadCurrentCity) => ISetCurrentCity;
+
+export type SwitchFahrenheitAction = (payload: { isFahrenheit: boolean }) => ISwitchFahrenheit;

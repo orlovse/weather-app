@@ -6,12 +6,19 @@ import { StyledWeatherCard } from 'styles/sharedStyle';
 // import { connect } from 'react-redux';
 import { FiveDaysWeather } from 'store/types/fiveDaysWeather.types';
 import { celsiusToFahrenheit } from 'utils/helpers';
+import { connect, ConnectedProps } from 'react-redux';
+import { ApplicationState } from 'store/types';
+import { isFahrenheitSelector } from 'store/selectors/localUserOptions.selector';
 
-interface Props {
+const connector = connect((state: ApplicationState) => ({
+	isFahrenheit: isFahrenheitSelector(state),
+}));
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+type Props = PropsFromRedux & {
 	weatherData?: FiveDaysWeather;
-}
-const WeatherCard: FC<Props> = ({ weatherData }: Props) => {
-	const isFahrenheit = false;
+};
+const WeatherCard: FC<Props> = ({ isFahrenheit, weatherData }: Props) => {
 	let phrase = null;
 	let weekday = null;
 	let stringTemperature = null;
@@ -47,4 +54,4 @@ const WeatherCard: FC<Props> = ({ weatherData }: Props) => {
 	);
 };
 
-export default WeatherCard;
+export default connector(WeatherCard);

@@ -8,8 +8,15 @@ import { connect, ConnectedProps } from 'react-redux';
 import { getIcon } from 'utils/geyIcons';
 import { Link } from 'react-router-dom';
 import AnimatedHeart from 'components/animatedHeart';
+import { ApplicationState } from 'store/types';
+import { isFahrenheitSelector } from 'store/selectors/localUserOptions.selector';
 
-const connector = connect(null, { setCurrentCity });
+const connector = connect(
+	(state: ApplicationState) => ({
+		isFahrenheit: isFahrenheitSelector(state),
+	}),
+	{ setCurrentCity }
+);
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
 type Props = PropsFromRedux & {
@@ -17,8 +24,7 @@ type Props = PropsFromRedux & {
 	favoriteWeather: Favorites;
 };
 
-const FavoriteCard: FC<Props> = ({ currentKey, favoriteWeather, setCurrentCity }: Props) => {
-	const isFahrenheit = false;
+const FavoriteCard: FC<Props> = ({ isFahrenheit, currentKey, favoriteWeather, setCurrentCity }: Props) => {
 	const celsius = favoriteWeather.currentWeather.metricT;
 	const fahrenheit = favoriteWeather.currentWeather.imperialT;
 	const cityName = favoriteWeather.currentCityName;

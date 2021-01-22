@@ -5,17 +5,17 @@ import { getIcon } from 'utils/geyIcons';
 import { connect, ConnectedProps } from 'react-redux';
 import { ApplicationState } from 'store/types';
 import { currentWeatherSelector } from 'store/selectors/currentWeather.selector';
-import { currentCitySelector } from 'store/selectors/localUserOptions.selector';
+import { currentCitySelector, isFahrenheitSelector } from 'store/selectors/localUserOptions.selector';
 
 const connector = connect((state: ApplicationState) => ({
 	currentWeather: currentWeatherSelector(state),
 	currentCity: currentCitySelector(state),
+	isFahrenheit: isFahrenheitSelector(state),
 }));
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
-const CurrentWeatherCard: FC<PropsFromRedux> = ({ currentWeather, currentCity }: PropsFromRedux) => {
-	const isFahrenheit = false;
+const CurrentWeatherCard: FC<PropsFromRedux> = ({ currentWeather, currentCity, isFahrenheit }: PropsFromRedux) => {
 	let currentTemperature = null;
 	let img = <Skeleton variant="circle" width={100} height={100} />;
 	if (currentWeather) {
