@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useEffect, FC } from 'react';
 import AutocompleteSearch from 'components/autocompleteSearch';
 import MainContainer from 'components/mainContainer';
 import { GlassBox } from 'styles/sharedStyle';
+import { connect, ConnectedProps } from 'react-redux';
+import { getCurrentWeather } from 'store/actions/currentWeather.actions';
 
-const Home: React.FC = () => {
+const connector = connect(null, { getCurrentWeather });
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+const Home: FC<PropsFromRedux> = ({ getCurrentWeather }: PropsFromRedux) => {
+	useEffect(() => {
+		getCurrentWeather();
+	}, []);
 	return (
 		<div>
 			<GlassBox>
@@ -16,4 +24,4 @@ const Home: React.FC = () => {
 	);
 };
 
-export default Home;
+export default connector(Home);

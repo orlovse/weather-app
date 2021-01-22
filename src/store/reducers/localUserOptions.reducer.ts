@@ -5,6 +5,7 @@ import {
 	REMOVE_FROM_FAVORITES,
 	SET_CURRENT_CITY,
 } from './../types/localUserOptions.types';
+
 const initialState: ILocalUserState = {
 	favorites: {},
 	currentCity: { key: '215854', name: 'Tel Aviv', country: 'Israel' },
