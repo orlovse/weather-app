@@ -1,7 +1,8 @@
-import { GET_FIVE_DAYS_WEATHER_REQUEST } from './../types/fiveDaysWeather.types';
 import type { AllEffect, ForkEffect } from '@redux-saga/core/effects';
 import { all, fork, put, takeEvery } from 'redux-saga/effects';
+import { toast } from 'react-toastify';
 import { setFiveDaysWeather, setFiveDaysWeatherError } from './../actions/fiveDaysWeather.actions';
+import { GET_FIVE_DAYS_WEATHER_REQUEST } from './../types/fiveDaysWeather.types';
 import { fiveDays } from '../../mockData';
 
 function* handleFetch() {
@@ -16,6 +17,15 @@ function* handleFetch() {
 		yield put(setFiveDaysWeather({ data }));
 	} catch (error) {
 		yield put(setFiveDaysWeatherError(error));
+		toast.error('Error loading weather!', {
+			position: 'top-right',
+			autoClose: 2000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+		});
 	}
 }
 

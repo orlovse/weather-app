@@ -6,11 +6,14 @@ import {
 	SET_CURRENT_CITY,
 	SWITCH_FAHRENHEIT,
 	SWITCH_DARK,
+	// GET_LOCATION,
+	SET_LOCATION,
 } from './../types/localUserOptions.types';
 
 const initialState: ILocalUserState = {
 	favorites: {},
 	currentCity: { key: '215854', name: 'Tel Aviv', country: 'Israel' },
+	currentLocation: null,
 	isFahrenheit: false,
 	isDark: false,
 };
@@ -21,6 +24,16 @@ const localUserOptions = (state = initialState, action: LocalUserActions): ILoca
 			return {
 				...state,
 				currentCity: action.payload,
+			};
+		// case GET_LOCATION:
+		// 	return {
+		// 		...state,
+		// 		currentLocation: action.payload,
+		// 	};
+		case SET_LOCATION:
+			return {
+				...state,
+				currentLocation: action.payload,
 			};
 		case SWITCH_FAHRENHEIT:
 			return {

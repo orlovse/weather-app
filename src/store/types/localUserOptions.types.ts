@@ -4,6 +4,7 @@ export const SET_CURRENT_CITY = 'SET_CURRENT_CITY';
 export const SWITCH_DARK = 'SWITCH_DARK';
 export const SWITCH_FAHRENHEIT = 'SWITCH_FAHRENHEIT';
 export const GET_LOCATION = 'GET_LOCATION';
+export const SET_LOCATION = 'SET_LOCATION';
 export const ADD_TO_FAVORITES = 'ADD_TO_FAVORITES';
 export const REMOVE_FROM_FAVORITES = 'REMOVE_FROM_FAVORITES';
 export interface ILocalUserState {
@@ -11,6 +12,7 @@ export interface ILocalUserState {
 	favorites: IFavorites;
 	isFahrenheit: boolean;
 	isDark: boolean;
+	currentLocation: PayloadCurrentLocation | null;
 }
 
 export interface ICurrentCity {
@@ -28,13 +30,24 @@ export type Favorites = {
 	currentWeather: CurrentWeather;
 };
 
-export type LocalUserActions = IAddToFavorites | IRemoveFromFavorites | ISetCurrentCity | ISwitchFahrenheit | ISwitchDark;
+export type LocalUserActions =
+	| IAddToFavorites
+	| IRemoveFromFavorites
+	| ISetCurrentCity
+	| ISwitchFahrenheit
+	| ISwitchDark
+	| ICurrentLocation;
 
 export type PayloadFavorite = {
 	key: string;
 	currentCityName: string;
 	currentCountry: string;
 	currentWeather: CurrentWeather;
+};
+
+export type PayloadCurrentLocation = {
+	latitude: string;
+	longitude: string;
 };
 
 export interface IAddToFavorites {
@@ -57,6 +70,15 @@ export interface ISwitchDark {
 	payload: { isDark: boolean };
 }
 
+export interface ICurrentLocation {
+	type: typeof SET_LOCATION;
+	payload: PayloadCurrentLocation;
+}
+
+export interface IGetCurrentLocation {
+	type: typeof GET_LOCATION;
+}
+
 export type PayloadCurrentCity = {
 	key: string;
 	name: string;
@@ -76,3 +98,7 @@ export type SetCurrentCityAction = (payload: PayloadCurrentCity) => ISetCurrentC
 export type SwitchFahrenheitAction = (payload: { isFahrenheit: boolean }) => ISwitchFahrenheit;
 
 export type SwitchDarkAction = (payload: { isDark: boolean }) => ISwitchDark;
+
+export type CurrentLocationAction = (payload: PayloadCurrentLocation) => ICurrentLocation;
+
+export type GetCurrentLocationAction = () => IGetCurrentLocation;

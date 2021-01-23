@@ -11,6 +11,11 @@ import {
 	SetCurrentCityAction,
 	SwitchFahrenheitAction,
 	SwitchDarkAction,
+	SET_LOCATION,
+	CurrentLocationAction,
+	PayloadCurrentLocation,
+	GetCurrentLocationAction,
+	GET_LOCATION,
 } from './../types/localUserOptions.types';
 
 export const addToFavorites: AddToFavoritesAction = (payload: PayloadFavorite) => ({
@@ -36,4 +41,13 @@ export const switchFahrenheit: SwitchFahrenheitAction = (payload: { isFahrenheit
 export const switchDark: SwitchDarkAction = (payload: { isDark: boolean }) => ({
 	type: SWITCH_DARK,
 	payload,
+});
+
+export const setCurrentLoaction: CurrentLocationAction = (payload: PayloadCurrentLocation) => ({
+	type: SET_LOCATION,
+	payload,
+});
+
+export const getCurrentLocation: GetCurrentLocationAction = () => ({
+	type: GET_LOCATION,
 });
