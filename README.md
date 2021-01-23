@@ -2,7 +2,7 @@
 
 Link to site: https://weather-app-ts-37cbf.web.app/home \
 App use Accuweather API (50 requests per day).  \
-Build on template: https://github.com/ilanrot90/herolo-boilerplate-react-typescript \
+Build on template: https://github.com/ilanrot90/herolo-boilerplate-react-typescript 
 
 ## Technologies
 * Typescript
