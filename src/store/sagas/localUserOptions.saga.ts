@@ -1,4 +1,13 @@
-import { SWITCH_DARK, ISwitchDark, GET_LOCATION, ICurrentLocation } from './../types/localUserOptions.types';
+import { getFiveDaysWeather } from 'store/actions/fiveDaysWeather.actions';
+import { getCurrentWeather } from 'store/actions/currentWeather.actions';
+import {
+	SWITCH_DARK,
+	ISwitchDark,
+	GET_LOCATION,
+	ICurrentLocation,
+	SET_CURRENT_CITY,
+	ISetCurrentCity,
+} from './../types/localUserOptions.types';
 import { setCurrentLoaction } from './../actions/localUserOptions.actions';
 // import { saveToLocalStorage, removeFromLocalStorage } from './../../utils/helpers';
 import type { AllEffect, ForkEffect } from '@redux-saga/core/effects';
@@ -73,6 +82,12 @@ function* handleGetLocation(action: ICurrentLocation) {
 	}
 }
 
+function* handleSetCurrentCity(action: ISetCurrentCity) {
+	const cityId = action.payload.key;
+	yield put(getCurrentWeather({ cityId }));
+	yield put(getFiveDaysWeather({ cityId }));
+}
+
 function* watchAddToFavorites() {
 	yield takeEvery(ADD_TO_FAVORITES, handleAddToFavorites);
 }
@@ -89,6 +104,16 @@ function* watchCurrentLocation() {
 	yield takeEvery(GET_LOCATION, handleGetLocation);
 }
 
+function* watchSetCurrentCity() {
+	yield takeEvery(SET_CURRENT_CITY, handleSetCurrentCity);
+}
+
 export function* addToFavoritesSaga(): Generator<AllEffect<ForkEffect<void>>, void, unknown> {
-	yield all([fork(watchAddToFavorites), fork(watchRemoveFromFavorites), fork(watchSwitchDark), fork(watchCurrentLocation)]);
+	yield all([
+		fork(watchAddToFavorites),
+		fork(watchRemoveFromFavorites),
+		fork(watchSwitchDark),
+		fork(watchCurrentLocation),
+		fork(watchSetCurrentCity),
+	]);
 }

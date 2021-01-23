@@ -6,14 +6,21 @@ import { connect, ConnectedProps } from 'react-redux';
 import { getCurrentWeather } from 'store/actions/currentWeather.actions';
 import { getFiveDaysWeather } from 'store/actions/fiveDaysWeather.actions';
 import { getCurrentLocation } from 'store/actions/localUserOptions.actions';
+import { ApplicationState } from 'store/types';
+import { currentCityKeySelector } from 'store/selectors/localUserOptions.selector';
 
-const connector = connect(null, { getCurrentWeather, getFiveDaysWeather, getCurrentLocation });
+const connector = connect(
+	(state: ApplicationState) => ({
+		cityKey: currentCityKeySelector(state),
+	}),
+	{ getCurrentWeather, getFiveDaysWeather, getCurrentLocation }
+);
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
-const Home: FC<PropsFromRedux> = ({ getCurrentWeather, getFiveDaysWeather, getCurrentLocation }: PropsFromRedux) => {
+const Home: FC<PropsFromRedux> = ({ cityKey, getCurrentWeather, getFiveDaysWeather, getCurrentLocation }: PropsFromRedux) => {
 	useEffect(() => {
-		getCurrentWeather();
-		getFiveDaysWeather();
+		getCurrentWeather({ cityId: cityKey.toString() });
+		getFiveDaysWeather({ cityId: cityKey.toString() });
 		getCurrentLocation();
 	}, []);
 	return (

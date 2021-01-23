@@ -1,3 +1,4 @@
+import { ISearchCityState, SearchCityActions } from './searchCity.types';
 import { ILocalUserState, LocalUserActions } from './localUserOptions.types';
 import { RouterState } from 'connected-react-router';
 import { ICurrentWeatherState, CurrentWeatherActions } from './currentWeather.types';
@@ -8,7 +9,8 @@ export interface ApplicationState {
 	localUserOptions: ILocalUserState;
 	currentWeather: ICurrentWeatherState;
 	fiveDaysWeather: IFiveDaysWeatherState;
+	searchCity: ISearchCityState;
 	router: RouterState;
 }
 // chain with | add the rest actions types
-export type AppAction = LocalUserActions | CurrentWeatherActions | FiveDaysActions;
+export type AppAction = LocalUserActions | CurrentWeatherActions | FiveDaysActions | SearchCityActions;

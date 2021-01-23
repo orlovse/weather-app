@@ -16,11 +16,12 @@ export type CurrentWeather = {
 	imperialT: number;
 };
 
-interface IGetCurrentWeather {
+export interface IGetCurrentWeather {
 	type: typeof GET_CURRENT_WEATHER_REQUEST;
+	payload: { cityId: string };
 }
 
-export type GetCurrentWeatherAction = () => IGetCurrentWeather;
+export type GetCurrentWeatherAction = (payload: { cityId: string }) => IGetCurrentWeather;
 
 type PayloadSuccess = {
 	data: CurrentWeather;

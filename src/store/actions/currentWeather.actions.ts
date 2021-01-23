@@ -7,8 +7,9 @@ import {
 	GetCurrentWeatherAction,
 } from './../types/currentWeather.types';
 
-export const getCurrentWeather: GetCurrentWeatherAction = () => ({
+export const getCurrentWeather: GetCurrentWeatherAction = payload => ({
 	type: GET_CURRENT_WEATHER_REQUEST,
+	payload,
 });
 
 export const setCurrentWeather: SetCurrentWeatherSuccsessAction = payload => ({

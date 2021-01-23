@@ -16,11 +16,12 @@ export type FiveDaysWeather = {
 	text: string;
 };
 
-interface IGetFiveDaysWeather {
+export interface IGetFiveDaysWeather {
 	type: typeof GET_FIVE_DAYS_WEATHER_REQUEST;
+	payload: { cityId: string };
 }
 
-export type GetFiveDaysWeatherAction = () => IGetFiveDaysWeather;
+export type GetFiveDaysWeatherAction = (payload: { cityId: string }) => IGetFiveDaysWeather;
 
 type PayloadSuccess = {
 	data: FiveDaysWeather[];

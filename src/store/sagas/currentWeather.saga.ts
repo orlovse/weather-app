@@ -1,19 +1,30 @@
-import { all, fork, put, takeEvery } from 'redux-saga/effects';
+import { CurrentWeatherResponse, callApiCurrentWeather } from './api/index';
+import { all, call, fork, put, takeEvery } from 'redux-saga/effects';
 import type { AllEffect, ForkEffect } from '@redux-saga/core/effects';
 import { toast } from 'react-toastify';
 import { setCurrentWeather, setCurrentWeatherError } from './../actions/currentWeather.actions';
-import { GET_CURRENT_WEATHER_REQUEST } from './../types/currentWeather.types';
-import { currentWeather } from '../../mockData';
+import { GET_CURRENT_WEATHER_REQUEST, IGetCurrentWeather } from './../types/currentWeather.types';
+// import { currentWeather } from '../../mockData';
 
-function* handleFetch() {
+function* handleFetch(action: IGetCurrentWeather) {
 	try {
+		// const data = {
+		// 	date: currentWeather[0].LocalObservationDateTime,
+		// 	text: currentWeather[0].WeatherText,
+		// 	icon: currentWeather[0].WeatherIcon,
+		// 	metricT: currentWeather[0].Temperature.Metric.Value,
+		// 	imperialT: currentWeather[0].Temperature.Imperial.Value,
+		// };
+
+		const response: CurrentWeatherResponse = yield call(callApiCurrentWeather, action.payload.cityId);
 		const data = {
-			date: currentWeather[0].LocalObservationDateTime,
-			text: currentWeather[0].WeatherText,
-			icon: currentWeather[0].WeatherIcon,
-			metricT: currentWeather[0].Temperature.Metric.Value,
-			imperialT: currentWeather[0].Temperature.Imperial.Value,
+			date: response[0].LocalObservationDateTime,
+			text: response[0].WeatherText,
+			icon: response[0].WeatherIcon,
+			metricT: response[0].Temperature.Metric.Value,
+			imperialT: response[0].Temperature.Imperial.Value,
 		};
+
 		yield put(setCurrentWeather({ data }));
 	} catch (error) {
 		toast.error('Error loading current weather!', {

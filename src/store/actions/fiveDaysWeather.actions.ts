@@ -7,8 +7,9 @@ import {
 	SET_FIVE_DAYS_WEATHER_ERROR,
 } from './../types/fiveDaysWeather.types';
 
-export const getFiveDaysWeather: GetFiveDaysWeatherAction = () => ({
+export const getFiveDaysWeather: GetFiveDaysWeatherAction = payload => ({
 	type: GET_FIVE_DAYS_WEATHER_REQUEST,
+	payload,
 });
 
 export const setFiveDaysWeather: SetFiveDaysWeatherSuccessAction = payload => ({
