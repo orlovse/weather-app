@@ -7,8 +7,10 @@ import {
 	PayloadCurrentCity,
 	SET_CURRENT_CITY,
 	SWITCH_FAHRENHEIT,
+	SWITCH_DARK,
 	SetCurrentCityAction,
 	SwitchFahrenheitAction,
+	SwitchDarkAction,
 } from './../types/localUserOptions.types';
 
 export const addToFavorites: AddToFavoritesAction = (payload: PayloadFavorite) => ({
@@ -28,5 +30,10 @@ export const setCurrentCity: SetCurrentCityAction = (payload: PayloadCurrentCity
 
 export const switchFahrenheit: SwitchFahrenheitAction = (payload: { isFahrenheit: boolean }) => ({
 	type: SWITCH_FAHRENHEIT,
+	payload,
+});
+
+export const switchDark: SwitchDarkAction = (payload: { isDark: boolean }) => ({
+	type: SWITCH_DARK,
 	payload,
 });

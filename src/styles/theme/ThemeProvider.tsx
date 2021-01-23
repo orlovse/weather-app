@@ -1,18 +1,30 @@
 import * as React from 'react';
 import { ThemeProvider as StyledComponentsProvider } from 'styled-components';
 import GlobalStyle from '../globalStyle';
-import theme from './theme';
+import { theme, themeDark } from './theme';
 import { ReactNode } from 'react';
+import { connect, ConnectedProps } from 'react-redux';
+import { isDarkSelector } from 'store/selectors/localUserOptions.selector';
+import { ApplicationState } from 'store/types';
 
-interface IProps {
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+type Props = PropsFromRedux & {
 	children: ReactNode;
-}
+};
 
-const ThemeProvider: React.FC<IProps> = ({ children }: IProps) => (
-	<StyledComponentsProvider theme={theme}>
-		<GlobalStyle />
-		{children}
-	</StyledComponentsProvider>
-);
+const connector = connect((state: ApplicationState) => ({
+	isDark: isDarkSelector(state),
+}));
 
-export default ThemeProvider;
+const ThemeProvider: React.FC<Props> = ({ children, isDark }: Props) => {
+	const currentTheme = isDark ? themeDark : theme;
+	return (
+		<StyledComponentsProvider theme={currentTheme}>
+			<GlobalStyle />
+			{children}
+		</StyledComponentsProvider>
+	);
+};
+
+export default connector(ThemeProvider);

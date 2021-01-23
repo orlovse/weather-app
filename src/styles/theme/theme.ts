@@ -32,6 +32,7 @@ export type ThemeType = {
 		gray: string;
 		darkGray: string;
 		lightGray: string;
+		gradient: string;
 	};
 	utils: {
 		centerFlex: string;
@@ -94,11 +95,34 @@ const sharedTheme = {
 	},
 };
 
-const theme: ThemeType = {
+export const theme: ThemeType = {
 	colors: {
 		primary: {
 			light: '#757ce8',
-			dark: '#222831',
+			dark: '#42a9d5',
+			contrastText: '#2e2e2e',
+		},
+		status: {
+			success,
+			warning,
+			error,
+			info,
+		},
+		bodyGray,
+		light,
+		gray,
+		darkGray,
+		lightGray,
+		gradient: 'linear-gradient(349deg, rgba(62,167,211,1) 20%, rgba(220,245,255,1) 100%)',
+	},
+	...sharedTheme,
+};
+
+export const themeDark: ThemeType = {
+	colors: {
+		primary: {
+			light: '#e40000',
+			dark: '#032849',
 			contrastText: '#f9fafa',
 		},
 		status: {
@@ -112,8 +136,9 @@ const theme: ThemeType = {
 		gray,
 		darkGray,
 		lightGray,
+		gradient: 'linear-gradient(90deg, rgba(0,37,70,1) 0%, rgba(74,119,171,1) 100%)',
 	},
 	...sharedTheme,
 };
 
-export default theme;
+// export default theme;

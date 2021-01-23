@@ -12,7 +12,11 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     body {
       height: 100%;
-      
+      background: ${({ theme }) => theme.colors.gradient} fixed;
+      overscroll-behavior: none;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      color: ${({ theme }) => theme.colors.primary.contrastText};
       #root {
         height: 100%;
       }
@@ -51,6 +55,10 @@ const GlobalStyle = createGlobalStyle`
   p, span, div, input, a, button {
     font-size: ${({ theme }) => theme.textSizes.m};
   }
+}
+
+.navbar {
+  background-color: ${({ theme }) => theme.colors.primary.dark};
 }
 
 `;

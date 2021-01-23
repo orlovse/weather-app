@@ -5,12 +5,14 @@ import {
 	REMOVE_FROM_FAVORITES,
 	SET_CURRENT_CITY,
 	SWITCH_FAHRENHEIT,
+	SWITCH_DARK,
 } from './../types/localUserOptions.types';
 
 const initialState: ILocalUserState = {
 	favorites: {},
 	currentCity: { key: '215854', name: 'Tel Aviv', country: 'Israel' },
 	isFahrenheit: false,
+	isDark: false,
 };
 
 const localUserOptions = (state = initialState, action: LocalUserActions): ILocalUserState => {
@@ -25,6 +27,11 @@ const localUserOptions = (state = initialState, action: LocalUserActions): ILoca
 				...state,
 				isFahrenheit: action.payload.isFahrenheit,
 			};
+		case SWITCH_DARK:
+			return {
+				...state,
+				isDark: action.payload.isDark,
+			};
 		case ADD_TO_FAVORITES:
 			return {
 				...state,
@@ -38,13 +45,6 @@ const localUserOptions = (state = initialState, action: LocalUserActions): ILoca
 				},
 			};
 		case REMOVE_FROM_FAVORITES:
-			// if(Object.keys(state.favorites).length > 1) {
-			// const { ...fields } = state.favorites;
-			// const fields = {...state.favorites}
-
-			// }
-			// console.log('fields', fields);
-
 			if (Object.keys(state.favorites).length > 0) {
 				const fields = { ...state.favorites };
 				delete fields[action.payload.key];
