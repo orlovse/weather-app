@@ -1,8 +1,8 @@
 # Weather App with React/Redux-Saga/Typescript By Sergey Orlov
 
-Link to site: https://weather-app-ts-37cbf.web.app/home
-App use Accuweather API (50 requests per day). 
-Build on template: https://github.com/ilanrot90/herolo-boilerplate-react-typescript
+Link to site: https://weather-app-ts-37cbf.web.app/home \
+App use Accuweather API (50 requests per day).  \
+Build on template: https://github.com/ilanrot90/herolo-boilerplate-react-typescript \
 
 ## Technologies
 * Typescript
