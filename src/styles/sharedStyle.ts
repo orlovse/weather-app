@@ -113,6 +113,10 @@ export const StyledWeatherCard = styled.div`
 	background-color: rgba(255, 255, 255, 0.15);
 	transition: 0.5s;
 
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+
 	&:hover {
 		transform: perspective(1px) scale(1.05);
 		box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.6);
@@ -153,6 +157,10 @@ export const StyledFavoriteCard = styled.div`
 	border-radius: 15px;
 	background-color: rgba(255, 255, 255, 0.15);
 	transition: 0.5s;
+
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
 
 	&:hover {
 		transform: perspective(1px) scale(1.03);

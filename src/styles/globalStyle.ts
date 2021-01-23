@@ -39,6 +39,10 @@ const GlobalStyle = createGlobalStyle`
   textarea:focus {
     outline: none;
   }
+
+  a {
+    color: ${({ theme }) => theme.colors.primary.contrastText};
+  }
   
   h1 {
     font-size: ${({ theme }) => theme.textSizes.xl};
@@ -59,6 +63,28 @@ const GlobalStyle = createGlobalStyle`
 
 .navbar {
   background-color: ${({ theme }) => theme.colors.primary.dark};
+}
+
+.links {
+  display: flex;
+  align-items: center;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  text-decoration: none;
+  padding: 1rem;
+  // font-size: 2rem;
+  text-transform: uppercase;
+  a {
+    color: #e4e4e4;
+  }
+}
+
+.active-link {
+  background-color: ${({ theme }) => theme.colors.primary.light};
 }
 
 `;

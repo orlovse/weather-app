@@ -98,7 +98,7 @@ const sharedTheme = {
 export const theme: ThemeType = {
 	colors: {
 		primary: {
-			light: '#757ce8',
+			light: '#ccedfa',
 			dark: '#42a9d5',
 			contrastText: '#2e2e2e',
 		},
@@ -121,7 +121,7 @@ export const theme: ThemeType = {
 export const themeDark: ThemeType = {
 	colors: {
 		primary: {
-			light: '#e40000',
+			light: '#4875a9',
 			dark: '#032849',
 			contrastText: '#f9fafa',
 		},

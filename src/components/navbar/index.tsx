@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { AppBar, Button, Grid, Toolbar, IconButton, Container } from '@material-ui/core';
+import { AppBar, Grid, Toolbar, IconButton, Container } from '@material-ui/core';
 
 import { isFahrenheitSelector, isDarkSelector } from 'store/selectors/localUserOptions.selector';
 import { ApplicationState } from 'store/types';
@@ -24,7 +24,7 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 
 const Navbar: FC<PropsFromRedux> = ({ isFahrenheit, isDark, switchFahrenheit, switchDark }: PropsFromRedux) => {
 	const links: { id: number; name: string; link: string }[] = [
-		{ id: 1, name: 'Home', link: '/' },
+		{ id: 1, name: 'Home', link: '/home' },
 		{ id: 2, name: 'Favorites', link: '/favorites' },
 	];
 
@@ -54,16 +54,10 @@ const Navbar: FC<PropsFromRedux> = ({ isFahrenheit, isDark, switchFahrenheit, sw
 								)}
 							</IconButton>
 						</div>
-						<div>
+						<div className="links">
 							{links.map(({ id, name, link }) => (
-								<NavLink
-									exact
-									key={id}
-									to={link}
-									// className={styles.link}
-									// activeClassName={styles.active}
-								>
-									<Button color="secondary">{name}</Button>
+								<NavLink exact key={id} to={link} className="link" activeClassName="active-link">
+									{name}
 								</NavLink>
 							))}
 						</div>
